@@ -47,7 +47,7 @@ export default function HomePage() {
             Explore Products
           </a>
           <a
-            href="https://waitlist.readysetgosaas.com"
+            href="https://waitlist.readysetgosaas.com/"
             className="px-8 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/5 transition-colors"
           >
             Join Waitlist
@@ -98,7 +98,7 @@ export default function HomePage() {
                 'Maestro Recordings',
               ]}
               status="Launching Q1 2025"
-              href="/mobile"
+              href="https://waitlist.readysetgosaas.com/mobile"
               gradient="from-purple-500 to-pink-500"
             />
 
@@ -118,7 +118,7 @@ export default function HomePage() {
                 'CLI Tool',
               ]}
               status="Launching Q2 2025"
-              href="/pro"
+              href="https://waitlist.readysetgosaas.com/pro"
               gradient="from-blue-500 to-cyan-500"
               featured
             />
@@ -139,7 +139,7 @@ export default function HomePage() {
                 '1700+ Lines Docs',
               ]}
               status="Launching Q3 2025"
-              href="/modular"
+              href="https://waitlist.readysetgosaas.com/modular"
               gradient="from-indigo-500 to-purple-500"
             />
           </div>
@@ -191,7 +191,7 @@ export default function HomePage() {
             Join our waitlist to get early access and exclusive launch discounts.
           </p>
           <a
-            href="https://waitlist.readysetgosaas.com"
+            href="https://waitlist.readysetgosaas.com/"
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary-dark to-primary text-white rounded-lg font-semibold hover:opacity-90 transition-opacity text-lg"
           >
             Join Waitlist
