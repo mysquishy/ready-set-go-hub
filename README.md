@@ -11,9 +11,9 @@ Central coordination repository for the Ready Set Go product family.
 
 ### Marketing Infrastructure
 - **[Mobile Landing](https://github.com/mysquishy/react-native-landing)** - Marketing page for mobile boilerplate
-- **[Waitlist Systems](./waitlist-systems/)** - Two systems for pre-launch email capture
-  - **Basic HTML** - Static HTML + API (15-min deploy, manual SQL admin)
-  - **Next.js PRO** - Full app with admin dashboard (30-min deploy, GUI management)
+- **[Waitlist Systems](./docs/ECOSYSTEM.md#5-waitlist-systems)** - Two production-ready systems for pre-launch email capture
+  - **[Basic HTML](https://github.com/mysquishy/waitlist-system)** ✅ - FREE lead magnet (Rate limiting, CAPTCHA, Sentry, 18 tests)
+  - **[Next.js PRO](https://github.com/mysquishy/waitlist-app.git)** ✅ - PREMIUM product (Admin dashboard + enterprise security, 31 tests)
 
 ## 📚 Documentation
 

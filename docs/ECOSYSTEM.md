@@ -142,13 +142,14 @@ We maintain **two waitlist systems** with different feature sets but equal profe
 
 ---
 
-##### 5a. Waitlist Basic (HTML + API)
+##### 5a. Waitlist Basic (HTML + API) - **FREE Lead Magnet**
 **Repository:** https://github.com/mysquishy/waitlist-system
-**Location:** `waitlist-systems/basic-html/`
+**Location:** `/Users/squishy64/Projects/boilerplates/waitlist-system`
 **Tech Stack:** Vanilla HTML/CSS/JS, Neon PostgreSQL, Vercel Serverless API
 **Best For:** Simple deployment, static hosting, minimal maintenance
+**Status:** ✅ **Production-Ready** with enterprise-grade security
 
-**Features:**
+**Core Features:**
 ✅ Email signup capture
 ✅ Product interest segmentation (Mobile, PRO, Modular, Bundle)
 ✅ Duplicate email prevention
@@ -163,26 +164,50 @@ We maintain **two waitlist systems** with different feature sets but equal profe
   - `pro.html` - PRO Edition (Apr 2025 launch)
   - `modular.html` - Modular SaaS (Jul 2025 launch)
 
+**🔒 Security Features (Production-Ready):**
+✅ **Enhanced rate limiting** (3 requests per 15 min)
+  - RFC 6585 compliant headers
+  - Automatic cleanup every 5 minutes
+  - Cloudflare IP support
+✅ **CAPTCHA protection** (Cloudflare Turnstile)
+  - Optional (graceful degradation)
+  - Privacy-friendly
+  - Test keys for development
+✅ **Error tracking** (Sentry)
+  - Monitors API errors and exceptions
+  - Filters sensitive data (emails, tokens, IPs)
+  - Performance metrics
+✅ **Test suite** (Jest)
+  - 18 passing tests
+  - Email validation, rate limiting, security
+  - `npm test` to run
+
 **Admin Access:**
 - Manual SQL queries via Neon dashboard
-- No built-in admin UI
+- No built-in admin UI (differentiator from PRO)
 - Export emails: SQL query in documentation
 - Analytics: Pre-built queries in docs
+
+**Documentation:**
+- See `SECURITY-IMPROVEMENTS.md` (450+ lines)
+- Complete setup guides for CAPTCHA and Sentry
+- Deployment checklist
+- Troubleshooting section
 
 **Deployment Time:** ~15 minutes
 
 ---
 
-##### 5b. Waitlist PRO (Next.js App)
+##### 5b. Waitlist PRO (Next.js App) - **PREMIUM Product**
 **Repository:** https://github.com/mysquishy/waitlist-app.git
-**Location:** `waitlist-systems/nextjs-pro/`
+**Location:** `/Users/squishy64/Projects/boilerplates/waitlist-app-nextjs`
 **Tech Stack:** Next.js 16, React 19, TypeScript, Tailwind CSS, Neon PostgreSQL, Drizzle ORM
 **Best For:** Advanced features, admin dashboard, real-time management
+**Status:** ✅ **Production-Ready** with enterprise-grade security
 
-**Features:**
+**Core Features:**
 ✅ Everything from Basic, PLUS:
 ✅ **Admin Dashboard** at `/admin`
-  - Password-protected access
   - Real-time stats (total signups, daily trends, interest breakdown)
   - CSV export (one-click download)
   - Delete individual signups
@@ -193,16 +218,59 @@ We maintain **two waitlist systems** with different feature sets but equal profe
   - Real-time error handling
   - Loading states
   - Success animations
+  - CAPTCHA widget integration
 ✅ **Developer Experience:**
   - TypeScript end-to-end
   - Type-safe database with Drizzle ORM
   - Hot module reload
   - Database migration scripts
 
+**🔒 Security Features (Production-Ready):**
+✅ **Secure admin authentication**
+  - HTTP-only cookie sessions (XSS prevention)
+  - Constant-time password comparison (timing attack prevention)
+  - Brute force protection (5 attempts per 15 min)
+  - 24-hour session expiry
+  - Secure flag (HTTPS-only in production)
+  - SameSite=lax (CSRF protection)
+  - ⚠️ **No more URL passwords** (deprecated for security)
+✅ **Enhanced rate limiting** (multiple endpoints)
+  - Signup: 3 per 15 min
+  - Admin stats: 30 per 1 min
+  - Admin export: 5 per 1 hour
+  - Admin delete: 10 per 1 min
+  - Counter: 60 per 1 min
+  - RFC 6585 compliant headers
+✅ **CAPTCHA protection** (Cloudflare Turnstile)
+  - Frontend widget integration (@marsidev/react-turnstile)
+  - Server-side verification
+  - Optional (graceful degradation)
+  - Dark theme matching app design
+✅ **Error tracking** (Sentry)
+  - Client-side errors (browser)
+  - Server-side errors (API)
+  - Edge runtime errors (middleware)
+  - Performance monitoring (10% trace sampling)
+  - Privacy-first (filters passwords, tokens, cookies)
+✅ **Test suite** (Jest + React Testing Library)
+  - 31 passing tests
+  - Rate limiting, CAPTCHA, admin auth
+  - 95%+ coverage on critical paths
+  - `npm test` to run
+
 **Admin Credentials:**
 - URL: `{your-domain}/admin`
-- Default Password: `launch2025` (change in `.env.local`)
-- Session: Auto-login (saved in browser)
+- Login: POST `/api/admin/login` with password
+- Logout: POST `/api/admin/logout`
+- Default Password: Set in `ADMIN_PASSWORD` env variable
+- Session: HTTP-only cookie (24-hour expiry)
+
+**Documentation:**
+- See `PRODUCTION-READY-IMPROVEMENTS.md` (519+ lines)
+- Complete setup guides for all security features
+- Deployment checklist
+- Troubleshooting section
+- Environment variable reference
 
 **Deployment Time:** ~30 minutes
 
@@ -210,23 +278,34 @@ We maintain **two waitlist systems** with different feature sets but equal profe
 
 ##### Feature Comparison Matrix
 
-| Feature | Basic HTML | Next.js PRO |
-|---------|------------|-------------|
+| Feature | Basic HTML (FREE) | Next.js PRO (PREMIUM) |
+|---------|-------------------|----------------------|
 | **Visual Design** | ⭐⭐⭐⭐⭐ Professional | ⭐⭐⭐⭐⭐ Professional |
 | **Email Capture** | ✅ | ✅ |
 | **Product Segmentation** | ✅ | ✅ |
 | **Duplicate Prevention** | ✅ | ✅ |
 | **Flywheel Badges** | ✅ | ✅ |
 | **Analytics Tracking** | ✅ | ✅ |
-| **Admin Dashboard** | ❌ | ✅ |
+| **🔒 SECURITY FEATURES** | | |
+| **Rate Limiting** | ✅ In-memory | ✅ In-memory (multi-endpoint) |
+| **CAPTCHA Protection** | ✅ Turnstile | ✅ Turnstile + Widget |
+| **Error Tracking** | ✅ Sentry | ✅ Sentry (client+server+edge) |
+| **Test Suite** | ✅ 18 tests | ✅ 31 tests (95%+ coverage) |
+| **Secure Admin Auth** | N/A | ✅ Cookie-based sessions |
+| **🎛️ ADMIN FEATURES** | | |
+| **Admin Dashboard** | ❌ | ✅ Full UI at `/admin` |
 | **CSV Export** | Manual SQL | ✅ One-click |
-| **Real-time Stats** | ❌ | ✅ |
+| **Real-time Stats** | ❌ | ✅ Auto-refresh |
 | **Delete Signups** | Manual SQL | ✅ UI button |
-| **TypeScript** | ❌ | ✅ |
+| **🛠️ DEVELOPER EXPERIENCE** | | |
+| **TypeScript** | ❌ | ✅ End-to-end |
 | **Database Migrations** | Manual SQL | ✅ Scripts |
+| **Documentation** | 450 lines | 519 lines |
+| **📊 DEPLOYMENT** | | |
 | **Setup Time** | 15 min | 30 min |
-| **Hosting Cost** | $0 (Vercel free tier) | $0 (Vercel free tier) |
+| **Hosting Cost** | $0 (Vercel free) | $0 (Vercel free) |
 | **Maintenance** | Low | Medium |
+| **Production Status** | ✅ Ready | ✅ Ready |
 
 ---
 
@@ -238,6 +317,7 @@ We maintain **two waitlist systems** with different feature sets but equal profe
 - You're comfortable with SQL queries
 - You prefer static hosting simplicity
 - You want minimal dependencies
+- **You're using it as a FREE lead magnet** (give away to capture emails)
 
 **Choose Next.js PRO if:**
 - You need admin dashboard for daily monitoring
@@ -245,8 +325,24 @@ We maintain **two waitlist systems** with different feature sets but equal profe
 - You need to delete spam/test entries easily
 - You prefer GUI over SQL queries
 - You're launching an active campaign and need real-time stats
+- **You're selling it as a PREMIUM product** (upgrade from free version)
 
-**Pro Tip:** Start with Basic for pre-launch, upgrade to PRO when campaign is active.
+**🎯 Strategic Positioning:**
+```
+FREE Lead Magnet (Basic HTML)
+    ↓
+User signs up on your waitlist
+    ↓
+Gets FREE basic waitlist system
+    ↓
+Launches successfully, sees value
+    ↓
+UPGRADE to PRO ($?) for admin features
+    ↓
+Buys your main product ($199-$499)
+```
+
+**Pro Tip:** Start with Basic for pre-launch, upgrade to PRO when campaign is active. Or give away Basic free, sell PRO as upgrade.
 
 ---
 
@@ -257,8 +353,46 @@ Both systems use:
 - **Analytics:** Google Analytics 4
 - **Domain:** waitlist.readysetgosaas.com
 - **Design System:** Dark theme, neon purple/blue accents, glassmorphism
+- **Security Stack:**
+  - Rate limiting (in-memory with automatic cleanup)
+  - Cloudflare Turnstile CAPTCHA (optional)
+  - Sentry error tracking (optional)
+  - Jest test suites
 
 **Migration Path:** Same database schema means you can switch between systems without data loss.
+
+---
+
+##### Environment Variables
+
+**Basic HTML System:**
+```bash
+# Required
+DATABASE_URL="postgresql://..."
+
+# Optional (Recommended for Production)
+TURNSTILE_SITE_KEY="..."
+TURNSTILE_SECRET_KEY="..."
+SENTRY_DSN="..."
+```
+
+**Next.js PRO System:**
+```bash
+# Required
+DATABASE_URL="postgresql://..."
+ADMIN_PASSWORD="strong-password-here"
+
+# Optional (Recommended for Production)
+NEXT_PUBLIC_TURNSTILE_SITE_KEY="..."
+TURNSTILE_SECRET_KEY="..."
+NEXT_PUBLIC_SENTRY_DSN="..."
+SENTRY_DSN="..."
+
+# Optional
+LEMONSQUEEZY_WEBHOOK_SECRET="..."
+```
+
+See respective `.env.example` files for complete configuration.
 
 ---
 
