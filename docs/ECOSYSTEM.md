@@ -396,6 +396,127 @@ See respective `.env.example` files for complete configuration.
 
 ---
 
+##### Flywheel Marketing System
+
+Both waitlist systems include a **"Built with Ready Set Go"** badge that implements a self-perpetuating marketing flywheel.
+
+**🎯 Strategy:**
+The free waitlist apps automatically market your paid boilerplates. Every user who deploys a waitlist system becomes a marketing channel for Ready Set Go products.
+
+**📍 Badge Placement:**
+- Located in footer section (bottom of page)
+- Appears after disclaimer text
+- Links to: `https://readysetgosaas.com`
+- Matches dark theme aesthetic (purple gradient on hover)
+
+**🔗 UTM Attribution:**
+```
+https://readysetgosaas.com?ref=waitlist&source=[product]&medium=badge&campaign=flywheel
+```
+
+**Product-specific sources:**
+- `source=main` - Hub page (index.html)
+- `source=mobile` - Mobile Boilerplate page
+- `source=pro` - PRO Edition page
+- `source=modular` - Modular SaaS page
+- `source=nextjs` - Next.js PRO waitlist app
+
+**📊 Analytics Tracking (Google Analytics 4):**
+
+Both systems track two events:
+
+**1. Badge Impression** (when badge becomes visible)
+```javascript
+gtag('event', 'badge_impression', {
+  event_category: 'flywheel',
+  event_label: '[product]_waitlist_viewed',
+  product: '[product]'
+});
+```
+- Fires when badge is 50% visible on screen
+- Uses IntersectionObserver API
+- Tracks once per page load
+- Measures visibility and scroll depth
+
+**2. Badge Click** (when user clicks badge)
+```javascript
+gtag('event', 'badge_click', {
+  event_category: 'flywheel',
+  event_label: '[product]_waitlist',
+  product: '[product]',
+  value: 1
+});
+```
+- Fires on every click
+- Tracks click-through rate (CTR)
+- Measures engagement
+
+**🛠️ Implementation Details:**
+
+**Basic HTML System:**
+- Vanilla JavaScript with IntersectionObserver
+- Inline tracking code in each landing page
+- CSS hover effects (gradient glow, transform)
+- Documentation: `FLYWHEEL_IMPLEMENTATION_COMPLETE.md`
+- Auto-add script: `add-badges-to-all.sh`
+
+**Next.js PRO System:**
+- React component: `components/FlyWheelBadge.tsx`
+- TypeScript with full type safety
+- useEffect hook for impression tracking
+- Tailwind CSS styling
+- Documentation: `FLYWHEEL_BADGE_IMPLEMENTATION.md`
+- Import: `<FlyWheelBadge />`
+
+**📈 Marketing Flywheel Flow:**
+
+```
+Customer deploys free waitlist
+    ↓
+Visitors see "Built with Ready Set Go" badge
+    ↓
+10% click badge (industry avg CTR for footer badges)
+    ↓
+Land on readysetgosaas.com
+    ↓
+Sign up for Ready Set Go waitlist
+    ↓
+Receive FREE basic waitlist system
+    ↓
+Deploy it for their product
+    ↓
+Their visitors see the badge
+    ↓
+FLYWHEEL REPEATS 🔄
+```
+
+**💡 Value Proposition:**
+- **For customers:** Free, production-ready waitlist system
+- **For Ready Set Go:** Every deployment = new marketing channel
+- **Compounding effect:** More users → More badges → More traffic → More users
+
+**🎨 Visual Design:**
+- Text: "Built with Ready Set Go"
+- Base state: Subtle gray text
+- Hover state: Purple gradient with glow effect
+- Smooth transform animation
+- Non-intrusive placement
+
+**📊 Measurable Metrics:**
+
+In Google Analytics, you can track:
+1. **Impression Rate:** How many visitors scroll to see badge
+2. **Click-Through Rate (CTR):** Badge clicks ÷ impressions
+3. **Traffic by Source:** Which product page drives most traffic
+4. **Conversion Rate:** Badge visitors → waitlist signups → purchases
+
+**Expected Performance:**
+- Impression rate: 60-80% (footer placement)
+- CTR: 8-12% (valuable, non-intrusive badge)
+- Attribution: Full funnel tracking via UTM parameters
+
+---
+
 ## 🎨 Brand Identity
 
 ### Colors (Consistent Across All Projects)
