@@ -133,20 +133,132 @@ Complete documentation of the Ready Set Go product family and how all projects w
 
 ---
 
-#### 5. Waitlist System
+#### 5. Waitlist Systems
 **Purpose:** Pre-launch email capture for all products
-**Repository:** https://github.com/mysquishy/waitlist-system
-**Location:** `/Users/squishy64/Projects/boilerplates/waitlist-system`
-**Tech Stack:** Neon PostgreSQL, Vercel Serverless, Vanilla HTML
+**Location:** `/Users/squishy64/Projects/boilerplates/ready-set-go-hub/waitlist-systems/`
 **URL:** https://waitlist.readysetgosaas.com
 
+We maintain **two waitlist systems** with different feature sets but equal professional design quality:
+
+---
+
+##### 5a. Waitlist Basic (HTML + API)
+**Repository:** https://github.com/mysquishy/waitlist-system
+**Location:** `waitlist-systems/basic-html/`
+**Tech Stack:** Vanilla HTML/CSS/JS, Neon PostgreSQL, Vercel Serverless API
+**Best For:** Simple deployment, static hosting, minimal maintenance
+
 **Features:**
-- Email signup capture
-- Product interest segmentation (Mobile vs PRO vs Modular)
-- Duplicate prevention
-- IP tracking & timestamps
-- Built-in analytics
-- 15-minute deployment
+✅ Email signup capture
+✅ Product interest segmentation (Mobile, PRO, Modular, Bundle)
+✅ Duplicate email prevention
+✅ IP tracking & timestamps
+✅ Professional dark theme with neon accents
+✅ Glassmorphism design
+✅ Animated gradient orbs
+✅ Flywheel badge system with analytics tracking
+✅ Multiple landing pages:
+  - `index.html` - Hub page (all products + bundles)
+  - `mobile.html` - Mobile Boilerplate (Jan 2025 launch)
+  - `pro.html` - PRO Edition (Apr 2025 launch)
+  - `modular.html` - Modular SaaS (Jul 2025 launch)
+
+**Admin Access:**
+- Manual SQL queries via Neon dashboard
+- No built-in admin UI
+- Export emails: SQL query in documentation
+- Analytics: Pre-built queries in docs
+
+**Deployment Time:** ~15 minutes
+
+---
+
+##### 5b. Waitlist PRO (Next.js App)
+**Repository:** https://github.com/mysquishy/waitlist-app.git
+**Location:** `waitlist-systems/nextjs-pro/`
+**Tech Stack:** Next.js 16, React 19, TypeScript, Tailwind CSS, Neon PostgreSQL, Drizzle ORM
+**Best For:** Advanced features, admin dashboard, real-time management
+
+**Features:**
+✅ Everything from Basic, PLUS:
+✅ **Admin Dashboard** at `/admin`
+  - Password-protected access
+  - Real-time stats (total signups, daily trends, interest breakdown)
+  - CSV export (one-click download)
+  - Delete individual signups
+  - Auto-refresh every 30 seconds
+  - Manual refresh button
+✅ **Enhanced UX:**
+  - Server-side form validation
+  - Real-time error handling
+  - Loading states
+  - Success animations
+✅ **Developer Experience:**
+  - TypeScript end-to-end
+  - Type-safe database with Drizzle ORM
+  - Hot module reload
+  - Database migration scripts
+
+**Admin Credentials:**
+- URL: `{your-domain}/admin`
+- Default Password: `launch2025` (change in `.env.local`)
+- Session: Auto-login (saved in browser)
+
+**Deployment Time:** ~30 minutes
+
+---
+
+##### Feature Comparison Matrix
+
+| Feature | Basic HTML | Next.js PRO |
+|---------|------------|-------------|
+| **Visual Design** | ⭐⭐⭐⭐⭐ Professional | ⭐⭐⭐⭐⭐ Professional |
+| **Email Capture** | ✅ | ✅ |
+| **Product Segmentation** | ✅ | ✅ |
+| **Duplicate Prevention** | ✅ | ✅ |
+| **Flywheel Badges** | ✅ | ✅ |
+| **Analytics Tracking** | ✅ | ✅ |
+| **Admin Dashboard** | ❌ | ✅ |
+| **CSV Export** | Manual SQL | ✅ One-click |
+| **Real-time Stats** | ❌ | ✅ |
+| **Delete Signups** | Manual SQL | ✅ UI button |
+| **TypeScript** | ❌ | ✅ |
+| **Database Migrations** | Manual SQL | ✅ Scripts |
+| **Setup Time** | 15 min | 30 min |
+| **Hosting Cost** | $0 (Vercel free tier) | $0 (Vercel free tier) |
+| **Maintenance** | Low | Medium |
+
+---
+
+##### When to Use Which System?
+
+**Choose Basic HTML if:**
+- You want fastest deployment (15 minutes)
+- You don't need frequent admin access
+- You're comfortable with SQL queries
+- You prefer static hosting simplicity
+- You want minimal dependencies
+
+**Choose Next.js PRO if:**
+- You need admin dashboard for daily monitoring
+- You want one-click CSV exports
+- You need to delete spam/test entries easily
+- You prefer GUI over SQL queries
+- You're launching an active campaign and need real-time stats
+
+**Pro Tip:** Start with Basic for pre-launch, upgrade to PRO when campaign is active.
+
+---
+
+##### Shared Infrastructure
+Both systems use:
+- **Database:** Neon PostgreSQL (same schema)
+- **Hosting:** Vercel (serverless functions)
+- **Analytics:** Google Analytics 4
+- **Domain:** waitlist.readysetgosaas.com
+- **Design System:** Dark theme, neon purple/blue accents, glassmorphism
+
+**Migration Path:** Same database schema means you can switch between systems without data loss.
 
 ---
 
